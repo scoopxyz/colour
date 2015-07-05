@@ -23,7 +23,8 @@ from colour.utilities import (
     dot_vector,
     dot_matrix,
     orient,
-    centroid)
+    centroid,
+    shift)
 
 __author__ = 'Colour Developers'
 __copyright__ = 'Copyright (C) 2013-2016 - Colour Developers'
@@ -44,7 +45,8 @@ __all__ = ['TestAsNumeric',
            'TestDotVector',
            'TestDotMatrix',
            'TestOrient',
-           'TestCentroid']
+           'TestCentroid',
+           'TestShift']
 
 
 class TestAsNumeric(unittest.TestCase):
@@ -541,6 +543,50 @@ class TestCentroid(unittest.TestCase):
         np.testing.assert_array_equal(
             centroid(a),
             np.array([4, 6, 1]))
+
+
+class TestShift(unittest.TestCase):
+    """
+    Defines :func:`colour.utilities.array.shift` definition unit tests methods.
+    """
+
+    def test_shift(self):
+        """
+        Tests :func:`colour.utilities.array.shift` definition.
+        """
+
+        a = np.arange(6)
+        np.testing.assert_array_equal(
+            shift(a, 3),
+            np.array([0, 0, 0, 0, 1, 2]))
+
+        np.testing.assert_array_equal(
+            shift(a, -3),
+            np.array([3, 4, 5, 0, 0, 0]))
+
+        np.testing.assert_array_equal(
+            shift(a, 0),
+            a)
+
+        a = tstack((a, a, a))
+        np.testing.assert_array_equal(
+            shift(a, 3),
+            np.array([[0, 0, 0],
+                      [0, 0, 0],
+                      [0, 0, 0],
+                      [0, 0, 0],
+                      [1, 1, 1],
+                      [2, 2, 2]]))
+
+        a = np.reshape(a, (2, 3, 3))
+        np.testing.assert_array_equal(
+            shift(a, 1),
+            np.array([[[0, 0, 0],
+                       [0, 0, 0],
+                       [0, 0, 0]],
+                      [[0, 0, 0],
+                       [1, 1, 1],
+                       [2, 2, 2]]]))
 
 
 if __name__ == '__main__':

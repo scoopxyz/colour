@@ -33,7 +33,8 @@ __all__ = ['as_numeric',
            'dot_vector',
            'dot_matrix',
            'orient',
-           'centroid']
+           'centroid',
+           'shift']
 
 
 def as_numeric(a, type_=np.float_):
@@ -605,3 +606,42 @@ def centroid(a):
         a_ci.append(np.sum(axis * a) // a_s)
 
     return np.array(a_ci).astype(np.int_)
+
+
+def shift(a, amount):
+    """
+    Shifts given array with given amount, blank indexes are zeros filled.
+
+    Parameters
+    ----------
+    a : array_like
+        Array to offset.
+    amount : int
+        Amount to shift the array.
+
+    Returns
+    -------
+    ndarray
+        Shifted array.
+
+    Examples
+    --------
+    >>> a = np.arange(6)
+    >>> shift(a, 3)
+    array([0, 0, 0, 0, 1, 2])
+    >>> shift(a, -3)
+    array([3, 4, 5, 0, 0, 0])
+    """
+
+    a = np.asarray(a)
+
+    if amount < 0:
+        padding = (0, -amount)
+        slc = np.index_exp[-amount:len(a) - amount, ...]
+    elif amount > 0:
+        padding = (amount, 0)
+        slc = np.index_exp[0:- amount, ...]
+    else:
+        return a
+
+    return np.pad(a, [padding] + [(0, 0)] * (a.ndim - 1), mode='constant')[slc]

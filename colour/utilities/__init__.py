@@ -30,7 +30,8 @@ from .array import (
     dot_vector,
     dot_matrix,
     orient,
-    centroid)
+    centroid,
+    shift)
 from .data_structures import (
     ArbitraryPrecisionMapping,
     Lookup,
@@ -63,7 +64,8 @@ __all__ += ['as_numeric',
             'dot_vector',
             'dot_matrix',
             'orient',
-            'centroid']
+            'centroid',
+            'shift']
 __all__ += ['ArbitraryPrecisionMapping',
             'Lookup',
             'Structure',
