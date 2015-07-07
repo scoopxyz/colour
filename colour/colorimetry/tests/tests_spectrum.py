@@ -3012,6 +3012,12 @@ TriSpectralPowerDistribution.normalise` method.
             self._tri_spd.clone().shift(-5).values,
             shift(self._tri_spd.clone().values, -5))
 
+        np.testing.assert_array_equal(
+            self._tri_spd.clone().shift(np.array([1, 2, 3])).values,
+            tstack((shift(self._tri_spd.x.values, 1),
+                    shift(self._tri_spd.y.values, 2),
+                    shift(self._tri_spd.z.values, 3))))
+
     def test_clone(self):
         """
         Tests :func:`colour.colorimetry.spectrum.\
