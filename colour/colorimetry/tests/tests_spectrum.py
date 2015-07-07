@@ -19,7 +19,7 @@ from colour.colorimetry.spectrum import (
     constant_spd,
     zeros_spd,
     ones_spd)
-from colour.utilities import tstack
+from colour.utilities import shift, tstack
 
 __author__ = 'Colour Developers'
 __copyright__ = 'Copyright (C) 2013-2016 - Colour Developers'
@@ -2451,6 +2451,21 @@ SpectralPowerDistribution.zeros` method.
             lambda: self._non_uniform_spd.clone().zeros(
                 SpectralShape(360, 830, 1)))
 
+    def test_shift(self):
+        """
+        Tests
+        :func:`colour.colorimetry.spectrum.SpectralPowerDistribution.shift`
+        method.
+        """
+
+        np.testing.assert_array_equal(
+            self._spd.clone().shift(5).values,
+            shift(self._spd.clone().values, 5))
+
+        np.testing.assert_array_equal(
+            self._spd.clone().shift(-5).values,
+            shift(self._spd.clone().values, -5))
+
     def test_normalise(self):
         """
         Tests :func:`colour.colorimetry.spectrum.\
@@ -2981,6 +2996,21 @@ TriSpectralPowerDistribution.normalise` method.
         np.testing.assert_almost_equal(
             self._sample_tri_spd.clone().normalise(100).values,
             np.array([[x] * 3 for x in NORMALISED_SAMPLE_SPD_DATA]))
+
+    def test_shift(self):
+        """
+        Tests
+        :func:`colour.colorimetry.spectrum.TriSpectralPowerDistribution.shift`
+        method.
+        """
+
+        np.testing.assert_array_equal(
+            self._tri_spd.clone().shift(5).values,
+            shift(self._tri_spd.clone().values, 5))
+
+        np.testing.assert_array_equal(
+            self._tri_spd.clone().shift(-5).values,
+            shift(self._tri_spd.clone().values, -5))
 
     def test_clone(self):
         """

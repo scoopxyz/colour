@@ -610,7 +610,7 @@ def centroid(a):
 
 def shift(a, amount):
     """
-    Shifts given array with given amount, blank indexes are zeros filled.
+    Shifts array with given amount, blank indexes are zeros filled.
 
     Parameters
     ----------
