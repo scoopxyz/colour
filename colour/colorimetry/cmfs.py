@@ -91,7 +91,6 @@ class LMS_ConeFundamentals(TriSpectralPowerDistribution):
     l_bar
     m_bar
     s_bar
-
     """
 
     def __init__(self, name, data, title=None):
