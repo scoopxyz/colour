@@ -2110,6 +2110,7 @@ class TestSpectralPowerDistribution(unittest.TestCase):
                             'align',
                             'trim_wavelengths',
                             'zeros',
+                            'shift',
                             'normalise',
                             'clone')
 
@@ -2581,6 +2582,7 @@ class TestTriSpectralPowerDistribution(unittest.TestCase):
                             'align',
                             'trim_wavelengths',
                             'zeros',
+                            'shift',
                             'normalise',
                             'clone')
 

@@ -77,6 +77,7 @@ class TestLMS_ConeFundamentals(unittest.TestCase):
                             'align',
                             'zeros',
                             'normalise',
+                            'shift',
                             'clone')
 
         for method in required_methods:
@@ -133,6 +134,7 @@ class TestRGB_ColourMatchingFunctions(unittest.TestCase):
                             'interpolate',
                             'align',
                             'zeros',
+                            'shift',
                             'normalise',
                             'clone')
 
@@ -190,6 +192,7 @@ class TestXYZ_ColourMatchingFunctions(unittest.TestCase):
                             'interpolate',
                             'align',
                             'zeros',
+                            'shift',
                             'normalise',
                             'clone')
 
