@@ -62,6 +62,8 @@ from .difference import *  # noqa
 from . import difference  # noqa
 from .characterisation import *  # noqa
 from . import characterisation  # noqa
+from .blindness import *  # noqa
+from . import blindness
 from .io import *  # noqa
 from . import io  # noqa
 from .models import *  # noqa
@@ -98,6 +100,7 @@ __all__ += appearance.__all__
 __all__ += constants.__all__
 __all__ += difference.__all__
 __all__ += characterisation.__all__
+__all__ += blindness.__all__
 __all__ += io.__all__
 __all__ += models.__all__
 __all__ += corresponding.__all__
