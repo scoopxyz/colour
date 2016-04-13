@@ -58,17 +58,19 @@ def lightness_Glasser1958(Y):
     Parameters
     ----------
     Y : numeric or array_like
+        metadata : {'type': 'Luminance', 'symbol': 'Y', 'extent': (0, 100)}
         *luminance* :math:`Y`.
 
     Returns
     -------
     numeric or array_like
+        metadata : {'type': 'Lightness', 'symbol': 'L', 'extent': (0, 100)}
         *Lightness* :math:`L`.
 
     Notes
     -----
-    -   Input *luminance* :math:`Y` is in domain [0, 100].
-    -   Output *Lightness* :math:`L` is in range [0, 100].
+    metadata : {'method_name': 'Glasser 1958', 'method_strict_name':
+        'Glasser et al. (1958)'}
 
     References
     ----------
@@ -94,21 +96,22 @@ def lightness_Wyszecki1963(Y):
     Returns the *Lightness* :math:`W` of given *luminance* :math:`Y` using
     *Wyszecki (1963)* method.
 
-
     Parameters
     ----------
     Y : numeric or array_like
+        metadata : {'type': 'Luminance', 'symbol': 'Y', 'extent': (0, 100)}
         *luminance* :math:`Y`.
 
     Returns
     -------
     numeric or array_like
+        metadata : {'type': 'Lightness', 'symbol': 'W', 'extent': (0, 100)}
         *Lightness* :math:`W`.
 
     Notes
     -----
-    -   Input *luminance* :math:`Y` is in domain [0, 100].
-    -   Output *Lightness* :math:`W` is in range [0, 100].
+    metadata : {'method_name': 'Wyszecki 1963', 'method_strict_name':
+        'Wyszecki (1963)'}
 
     References
     ----------
@@ -141,19 +144,22 @@ def lightness_CIE1976(Y, Y_n=100):
     Parameters
     ----------
     Y : numeric or array_like
+        metadata : {'type': 'Luminance', 'symbol': 'Y', 'extent': (0, 100)}
         *luminance* :math:`Y`.
     Y_n : numeric or array_like, optional
+        metadata : {'type': 'Luminance', 'symbol': 'Y', 'extent': (0, 100)}
         White reference *luminance* :math:`Y_n`.
 
     Returns
     -------
     numeric or array_like
+        metadata : {'type': 'Lightness', 'symbol': 'L^\star',
+        'extent': (0, 100)}
         *Lightness* :math:`L^*`.
 
     Notes
     -----
-    -   Input *luminance* :math:`Y` and :math:`Y_n` are in domain [0, 100].
-    -   Output *Lightness* :math:`L^*` is in range [0, 100].
+    metadata : {'method_name': 'CIE 1976', 'method_strict_name': 'CIE 1976'}
 
     References
     ----------
@@ -221,12 +227,6 @@ def lightness(Y, method='CIE 1976', **kwargs):
     -------
     numeric or array_like
         *Lightness* :math:`L^*`.
-
-    Notes
-    -----
-    -   Input *luminance* :math:`Y` and optional :math:`Y_n` are in domain
-        [0, 100].
-    -   Output *Lightness* :math:`L^*` is in range [0, 100].
 
     Examples
     --------
