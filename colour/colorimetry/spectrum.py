@@ -2189,8 +2189,7 @@ class SpectralPowerDistribution(object):
         ...     550: 86.26,
         ...     560: 77.18}
         >>> spd = SpectralPowerDistribution('Spd', data)
-        >>> spd.shift(3)  # doctest: +ELLIPSIS
-        <...SpectralPowerDistribution object at 0x...>
+        >>> spd = spd.shift(3)
         >>> spd.values
         array([  0.  ,   0.  ,   0.  ,  49.67,  69.59,  81.73])
         """
@@ -4328,8 +4327,7 @@ class TriSpectralPowerDistribution(object):
         >>> data = {'x_bar': x_bar, 'y_bar': y_bar, 'z_bar': z_bar}
         >>> mapping = {'x': 'x_bar', 'y': 'y_bar', 'z': 'z_bar'}
         >>> tri_spd = TriSpectralPowerDistribution('Tri Spd', data, mapping)
-        >>> tri_spd.shift(np.array([1, 2, 3]))  # doctest: +ELLIPSIS
-        <...TriSpectralPowerDistribution object at 0x...>
+        >>> tri_spd = tri_spd.shift(np.array([1, 2, 3]))
         >>> tri_spd.values
         array([[  0.  ,   0.  ,   0.  ],
                [ 49.67,   0.  ,   0.  ],
@@ -4342,7 +4340,7 @@ class TriSpectralPowerDistribution(object):
         amount = np.asarray(amount)
         amount = np.resize(amount, 3)
 
-        for i, j in enumerate(sorted(self.__mapping.keys())):
+        for i, j in enumerate(sorted(self._mapping.keys())):
             getattr(self, j).shift(amount[i])
 
         return self

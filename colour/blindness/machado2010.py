@@ -70,7 +70,8 @@ def RGB_to_WSYBRG_matrix(cmfs, primaries):
     WSYBRG = dot_vector(LMS_TO_WSYBRG_MATRIX, cmfs.values)
     WS, YB, RG = tsplit(WSYBRG)
 
-    primaries = primaries.clone().align(cmfs.shape, left=0, right=0)
+    primaries = primaries.clone().align(
+        cmfs.shape, extrapolation_left=0, extrapolation_right=0)
     R, G, B = tsplit(primaries.values)
 
     WS_R = np.trapz(R * WS, wavelengths)
@@ -113,9 +114,9 @@ def anomalous_trichromacy_cmfs_Machado2010(cmfs, d_LMS):
 
     Notes
     -----
-    -   Input *LMS* cone fundamentals colour matching functions steps size is
+    -   Input *LMS* cone fundamentals colour matching functions interval is
         expected to be 1 nanometer, non complying input will be interpolated
-        at 1 nanometer steps size.
+        at 1 nanometer interval.
     -   Input :math:`\Delta_{LMS}` shift amount is in domain [0, 20].
 
     Returns
@@ -135,8 +136,8 @@ def anomalous_trichromacy_cmfs_Machado2010(cmfs, d_LMS):
     """
 
     cmfs = cmfs.clone()
-    if cmfs.shape.steps != 1:
-        cmfs = cmfs.clone().interpolate(SpectralShape(steps=1))
+    if cmfs.shape.interval != 1:
+        cmfs = cmfs.clone().interpolate(SpectralShape(interval=1))
 
     L, M, S = tsplit(cmfs.values)
     d_L, d_M, d_S = np.asarray(d_LMS).astype(np.int_)
@@ -145,7 +146,12 @@ def anomalous_trichromacy_cmfs_Machado2010(cmfs, d_LMS):
     area_L = np.trapz(L, wavelengths)
     area_M = np.trapz(M, wavelengths)
 
-    alpha = lambda x: (20 - x) / 20
+    def alpha(x):
+        """
+        Computes :math:`alpha` factor.
+        """
+
+        return (20 - x) / 20
 
     # Corrected equations as per:
     # http://www.inf.ufrgs.br/~oliveira/pubs_files/
@@ -185,9 +191,9 @@ def anomalous_trichromacy_matrix_Machado2010(cmfs, primaries, d_LMS):
 
     Notes
     -----
-    -   Input *LMS* cone fundamentals colour matching functions steps size is
+    -   Input *LMS* cone fundamentals colour matching functions interval is
         expected to be 1 nanometer, non complying input will be interpolated
-        at 1 nanometer steps size.
+        at 1 nanometer interval.
     -   Input :math:`\Delta_{LMS}` shift amount is in domain [0, 20].
 
     Returns
@@ -207,8 +213,8 @@ def anomalous_trichromacy_matrix_Machado2010(cmfs, primaries, d_LMS):
            [ 0.0064404...,  0.2592157...,  0.7343437...]])
     """
 
-    if cmfs.shape.steps != 1:
-        cmfs = cmfs.clone().interpolate(SpectralShape(steps=1))
+    if cmfs.shape.interval != 1:
+        cmfs = cmfs.clone().interpolate(SpectralShape(interval=1))
 
     M_n = RGB_to_WSYBRG_matrix(cmfs, primaries)
     cmfs_a = anomalous_trichromacy_cmfs_Machado2010(cmfs, d_LMS)

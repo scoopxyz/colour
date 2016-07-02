@@ -63,7 +63,7 @@ from . import difference  # noqa
 from .characterisation import *  # noqa
 from . import characterisation  # noqa
 from .blindness import *  # noqa
-from . import blindness
+from . import blindness  # noqa
 from .io import *  # noqa
 from . import io  # noqa
 from .models import *  # noqa
