@@ -11,7 +11,8 @@ using Machado (2010) method.
 See Also
 --------
 `Machado (2010) - CVD IPython Notebook
-<http://nbviewer.ipython.org/github/colour-science/colour-ipython/blob/master/notebooks/cvd/machado2010.ipynb>`_  # noqa
+<http://nbviewer.ipython.org/github/colour-science/colour-ipython/\
+blob/master/notebooks/cvd/machado2010.ipynb>`_
 
 References
 ----------

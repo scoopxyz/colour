@@ -14,7 +14,8 @@ Defines Machado (2010) objects for simulation of colour vision deficiency:
 See Also
 --------
 `Machado (2010) - CVD IPython Notebook
-<http://nbviewer.ipython.org/github/colour-science/colour-ipython/blob/master/notebooks/cvd/machado2010.ipynb>`_  # noqa
+<http://nbviewer.ipython.org/github/colour-science/colour-ipython/\
+blob/master/notebooks/cvd/machado2010.ipynb>`_
 
 References
 ----------
@@ -131,7 +132,8 @@ def anomalous_trichromacy_cmfs_Machado2010(cmfs, d_LMS):
     >>> cmfs = LMS_CMFS.get('Stockman & Sharpe 2 Degree Cone Fundamentals')
     >>> cmfs[450]
     array([ 0.0498639,  0.0870524,  0.955393 ])
-    >>> anomalous_trichromacy_cmfs_Machado2010(cmfs, np.array([15, 0, 0]))[450]  # noqa  # doctest: +ELLIPSIS
+    >>> anomalous_trichromacy_cmfs_Machado2010(  # doctest: +ELLIPSIS
+    ...     cmfs, np.array([15, 0, 0]))[450]
     array([ 0.0891288...,  0.0870524 ,  0.955393  ])
     """
 
@@ -207,7 +209,8 @@ def anomalous_trichromacy_matrix_Machado2010(cmfs, primaries, d_LMS):
     >>> cmfs = LMS_CMFS.get('Stockman & Sharpe 2 Degree Cone Fundamentals')
     >>> d_LMS = np.array([15, 0, 0])
     >>> primaries = DISPLAYS_RGB_PRIMARIES.get('Apple Studio Display')
-    >>> anomalous_trichromacy_matrix_Machado2010(cmfs, primaries, d_LMS)  # noqa  # doctest: +ELLIPSIS
+    >>> anomalous_trichromacy_matrix_Machado2010(  # doctest: +ELLIPSIS
+    ...     cmfs, primaries, d_LMS)
     array([[-0.2777465...,  2.6515008..., -1.3737543...],
            [ 0.2718936...,  0.2004786...,  0.5276276...],
            [ 0.0064404...,  0.2592157...,  0.7343437...]])
