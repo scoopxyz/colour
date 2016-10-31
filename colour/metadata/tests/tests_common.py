@@ -217,9 +217,15 @@ class TestFilterMetadataRegistry(unittest.TestCase):
             set([colour.Lab_to_LCHab,
                  colour.Lab_to_XYZ,
                  colour.LCHab_to_Lab,
+                 colour.LCHuv_to_Luv,
                  colour.lightness_CIE1976,
                  colour.luminance_CIE1976,
-                 colour.XYZ_to_Lab]))
+                 colour.Luv_to_LCHuv,
+                 colour.Luv_to_uv,
+                 colour.Luv_to_XYZ,
+                 colour.Luv_uv_to_xy,
+                 colour.XYZ_to_Lab,
+                 colour.XYZ_to_Luv]))
 
 
 if __name__ == '__main__':
