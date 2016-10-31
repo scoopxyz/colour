@@ -214,8 +214,12 @@ class TestFilterMetadataRegistry(unittest.TestCase):
             set(filter_metadata_registry('CIE 1976',
                                          categories='notes',
                                          attributes='method_name')),
-            set([colour.luminance_CIE1976,
-                 colour.lightness_CIE1976]))
+            set([colour.Lab_to_LCHab,
+                 colour.Lab_to_XYZ,
+                 colour.LCHab_to_Lab,
+                 colour.lightness_CIE1976,
+                 colour.luminance_CIE1976,
+                 colour.XYZ_to_Lab]))
 
 
 if __name__ == '__main__':
