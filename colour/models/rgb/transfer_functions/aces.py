@@ -51,7 +51,6 @@ References
         https://github.com/ampas/aces-dev/tree/v1.0.3/documents
 """
 
-
 from __future__ import division, unicode_literals
 
 import numpy as np
@@ -130,7 +129,9 @@ def log_encoding_ACESproxy(lin_AP1, bit_depth='10 Bit'):
     Parameters
     ----------
     lin_AP1 : numeric or array_like
-        *lin_AP1* value.
+        metadata : {'type': 'lin AP1', 'symbol': 'lin_\{AP1\}',
+        'extent': (-65504, 65504)}
+        :math:`lin_{AP1}` value.
     bit_depth : unicode, optional
         **{'10 Bit', '12 Bit'}**,
         *ACESproxy* bit depth.
@@ -138,7 +139,9 @@ def log_encoding_ACESproxy(lin_AP1, bit_depth='10 Bit'):
     Returns
     -------
     numeric or ndarray
-        *ACESproxy* non-linear value.
+        metadata : {'type': 'ACESproxy', 'symbol': 'ACES_\{proxy\}',
+        'extent': (64, 940)}
+        :math:`ACES_{proxy}` non-linear value.
 
     Examples
     --------
@@ -178,7 +181,9 @@ def log_decoding_ACESproxy(ACESproxy, bit_depth='10 Bit'):
     Parameters
     ----------
     ACESproxy : numeric or array_like
-        *ACESproxy* non-linear value.
+        metadata : {'type': 'ACESproxy', 'symbol': 'ACES_\{proxy\}',
+        'extent': (64, 940)}
+        :math:`ACES_{proxy}` non-linear value.
     bit_depth : unicode, optional
         **{'10 Bit', '12 Bit'}**,
         *ACESproxy* bit depth.
@@ -186,7 +191,9 @@ def log_decoding_ACESproxy(ACESproxy, bit_depth='10 Bit'):
     Returns
     -------
     numeric or ndarray
-        *lin_AP1* value.
+        metadata : {'type': 'lin AP1', 'symbol': 'lin_\{AP1\}',
+        'extent': (-65504, 65504)}
+        :math:`lin_{AP1}` value.
 
     Examples
     --------
@@ -210,12 +217,16 @@ def log_encoding_ACEScc(lin_AP1):
     Parameters
     ----------
     lin_AP1 : numeric or array_like
-        *lin_AP1* value.
+        metadata : {'type': 'lin AP1', 'symbol': 'lin_\{AP1\}',
+        'extent': (-65504, 65504)}
+        :math:`lin_{AP1}` value.
 
     Returns
     -------
     numeric or ndarray
-        *ACEScc* non-linear value.
+        metadata : {'type': 'ACEScc', 'symbol': 'ACES_\{cc\}',
+        'extent': (-0.358447488584475, 1.467996312044715)}
+        :math:`ACES_{cc}` non-linear value.
 
     Examples
     --------
@@ -231,7 +242,6 @@ def log_encoding_ACEScc(lin_AP1):
     output = np.where(lin_AP1 >= 2 ** -15,
                       (np.log2(lin_AP1) + 9.72) / 17.52,
                       output)
-
     return as_numeric(output)
 
 
@@ -243,12 +253,16 @@ def log_decoding_ACEScc(ACEScc):
     Parameters
     ----------
     ACEScc : numeric or array_like
-        *ACEScc* non-linear value.
+        metadata : {'type': 'ACEScc', 'symbol': 'ACES_\{cc\}',
+        'extent': (-0.358447488584475, 1.467996312044715)}
+        :math:`ACES_{cc}` non-linear value.
 
     Returns
     -------
     numeric or ndarray
-        *lin_AP1* value.
+        metadata : {'type': 'lin AP1', 'symbol': 'lin_\{AP1\}',
+        'extent': (-65504, 65504)}
+        :math:`lin_{AP1}` value.
 
     Examples
     --------
@@ -276,12 +290,16 @@ def log_encoding_ACEScct(lin_AP1):
     Parameters
     ----------
     lin_AP1 : numeric or array_like
-        *lin_AP1* value.
+        metadata : {'type': 'lin AP1', 'symbol': 'lin_\{AP1\}',
+        'extent': (-65504, 65504)}
+        :math:`lin_AP1` value.
 
     Returns
     -------
     numeric or ndarray
-        *ACEScct* non-linear value.
+        metadata : {'type': 'ACEScct', 'symbol': 'ACES_\{cct\}',
+        'extent': (-690427.660123802255839, 1.467996312044715)}
+        :math:`ACES_{cct}` non-linear value.
 
     Examples
     --------
@@ -308,12 +326,16 @@ def log_decoding_ACEScct(ACEScct):
     Parameters
     ----------
     ACEScct : numeric or array_like
-        *ACEScct* non-linear value.
+        metadata : {'type': 'ACEScct', 'symbol': 'ACES_\{cct\}',
+        'extent': (-690427.660123802255839, 1.467996312044715)}
+        :math:`ACES_{cct}` non-linear value.
 
     Returns
     -------
     numeric or ndarray
-        *lin_AP1* value.
+        metadata : {'type': 'lin AP1', 'symbol': 'lin_\{AP1\}',
+        'extent': (-65504, 65504)}
+        :math:`lin_AP1` value.
 
     Examples
     --------
