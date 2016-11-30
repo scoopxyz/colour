@@ -220,5 +220,6 @@ class TestDocstringFields(unittest.TestCase):
             evaluated['notes'],
             [('-   Note a.', ''), ('-   Note b.', '')])
 
+
 if __name__ == '__main__':
     unittest.main()
